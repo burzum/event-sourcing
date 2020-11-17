@@ -32,7 +32,7 @@ abstract class AbstractRepository implements AggregateRepositoryInterface
 	 *
 	 * @var \Psa\EventSourcing\Aggregate\AggregateTypeInterface
 	 */
-	protected $aggregateType;
+	protected AggregateTypeInterface $aggregateType;
 
 	/**
 	 * Determines and checks the aggregate type for this repository

@@ -59,7 +59,7 @@ abstract class AsyncAggregateRepository extends AbstractRepository
 	 *
 	 * @var string|array|\Psa\EventSourcing\Aggregate\AggregateType
 	 */
-	protected $aggregateType;
+	protected AggregateTypeInterface $aggregateType;
 
 	/**
 	 * Event Type Mapping

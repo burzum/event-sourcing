@@ -32,14 +32,15 @@ interface AggregateTypeInterface
 	public function __toString(): string;
 
 	/**
-	 * @param object $aggregateType An aggregate
-	 * @throws Exception\AggregateTypeException
+	 * @param \Psa\EventSourcing\Aggregate\AggregateTypeInterface $aggregateType An aggregate
+	 * @throws \Psa\EventSourcing\Aggregate\Exception\AggregateTypeException
 	 */
 	public function assert(AggregateTypeInterface $aggregateType): void;
 
 	/**
 	 * Checks if two instances of this class are equal
 	 *
+	 * @param \Psa\EventSourcing\Aggregate\AggregateTypeInterface $other
 	 * @return bool
 	 */
 	public function equals(AggregateTypeInterface $other): bool;

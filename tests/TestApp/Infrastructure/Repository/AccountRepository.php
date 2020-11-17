@@ -20,7 +20,7 @@ class AccountRepository extends AggregateRepository
 		Account::AGGREGATE_TYPE => Account::class
 	];
 
-	protected $aggregateType = [
+	protected \Psa\EventSourcing\Aggregate\AggregateTypeInterface $aggregateType = [
 		Account::AGGREGATE_TYPE => Account::class
 	];
 

@@ -45,7 +45,7 @@ class EventReflectionTranslator implements EventTranslatorInterface
 
 	/**
 	 * @param string $aggregateId Aggregat Id
-	 * @param \Psa\EventSourcing\Aggregate\AggregateType $aggregateType
+	 * @param \Psa\EventSourcing\Aggregate\AggregateTypeInterface $aggregateType
 	 * @param array $events Events
 	 * @return array
 	 */
@@ -85,13 +85,13 @@ class EventReflectionTranslator implements EventTranslatorInterface
 				$aggregateType,
 				$event,
 				$eventType
-			)),
+			), JSON_THROW_ON_ERROR),
 			json_encode($this->buildMetadata(
 				$aggregateId,
 				$aggregateType,
 				$event,
 				$eventType
-			))
+			), JSON_THROW_ON_ERROR)
 		);
 	}
 
@@ -108,7 +108,7 @@ class EventReflectionTranslator implements EventTranslatorInterface
 		$payload = [];
 
 		foreach ($reflection->getProperties() as $property) {
-			if (in_array($property->getName(), $this->excludedProperties)) {
+			if (in_array($property->getName(), $this->excludedProperties, true)) {
 				continue;
 			}
 
@@ -129,12 +129,13 @@ class EventReflectionTranslator implements EventTranslatorInterface
 	 * @param string $eventType Event Type
 	 * @return array
 	 */
-	protected function buildMetadata($aggregateId, $aggregateType, $event, $eventType): array
+	protected function buildMetadata(string $aggregateId, $aggregateType, $event, $eventType): array
 	{
 		return [
 			'aggregate_id' => $aggregateId,
 			'event_class' => get_class($event),
-			'event_type' => $eventType
+			'event_type' => $eventType,
+			'aggregate_type' => $aggregateType
 		];
 	}
 
@@ -146,11 +147,11 @@ class EventReflectionTranslator implements EventTranslatorInterface
 	public function fromStore(RecordedEvent $recordedEvent): object
 	{
 		$version = $recordedEvent->eventNumber();
-		$metadata = json_decode($recordedEvent->metadata(), true);
+		$metadata = json_decode($recordedEvent->metadata(), true, 512, JSON_THROW_ON_ERROR);
 		$payload = $recordedEvent->data();
 
 		if ($recordedEvent->isJson()) {
-			$payload = json_decode($payload, true);
+			$payload = json_decode($payload, true, 512, JSON_THROW_ON_ERROR);
 		}
 
 		if (!isset($metadata['event_class'])) {

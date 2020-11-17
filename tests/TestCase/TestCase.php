@@ -45,7 +45,7 @@ class TestCase extends PhpUnitTestCase
 
 		$data = [
 			'username' => getenv('PDO_TEST_USER', 'root'),
-			'password' => getenv('PDO_TEST_PASS', ''),
+			'password' => getenv('PDO_TEST_PASS', 'id10t'),
 			'hostname' => getenv('PDO_TEST_HOST', 'localhost'),
 			'dbname' => getenv('PDO_TEST_DB', 'test'),
 		];

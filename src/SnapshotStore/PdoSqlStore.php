@@ -29,7 +29,7 @@ class PdoSqlStore implements SnapshotStoreInterface
 	 *
 	 * @var \PDO
 	 */
-	protected $pdo;
+	protected PDO $pdo;
 
 	/**
 	 * Serializer
@@ -43,7 +43,7 @@ class PdoSqlStore implements SnapshotStoreInterface
 	 *
 	 * @var string
 	 */
-	protected $table = 'event_store_snapshots';
+	protected string $table = 'event_store_snapshots';
 
 	/**
 	 * Constructor

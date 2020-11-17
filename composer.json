@@ -1,31 +1,32 @@
 {
 	"name": "psa/event-sourcing",
 	"description": "Event Sourcing Library",
+	"keywords": ["framework-agnostic", "event-sourcing", "cqrs", "ddd", "events"],
 	"type": "library",
 	"authors": [
 		{
 			"name": "Florian Krämer",
-			"email": "fk@world-architects.com"
+			"homepage": "https://florian-kraemer.net"
 		}
 	],
 	"require": {
-		"php": "^7.2",
+		"php": "^7.4",
 		"ext-json": "*",
 		"beberlei/assert": "^3.2",
-		"prooph/event-store": "dev-master#70ed3816a49769557dc7ec6c6828823fced31348 as v8.0.0-RC-1",
-		"prooph/event-store-client": "dev-master#30b35b2e4d0c9bea7420f3088c2ec3732efcb25b as 1.0",
+		"prooph/event-store": "dev-master as v8.0.0-RC-1",
+		"prooph/event-store-client": "dev-master as 1.0",
 		"psr/log": "^1.1",
 		"ramsey/uuid": "^3.8"
 	},
 	"require-dev": {
-		"guzzlehttp/guzzle": "^6.3",
+		"guzzlehttp/guzzle": "^6.5",
 		"php-http/guzzle6-adapter": "^2.0",
-		"phpro/grumphp": "^0.15.2",
-		"phpstan/phpstan": "^0.11.16",
-		"phpunit/phpunit": "^8.2",
-		"prooph/event-store-http-client": "dev-master#f47ac7bfe5905c6fc181411feb65c941f9396334",
+		"phpro/grumphp": "^1.1.0",
+		"phpstan/phpstan": "^0.12.56",
+		"phpunit/phpunit": "^9.4",
+		"prooph/event-store-http-client": "dev-master",
 		"psr/cache": "^1.0",
-		"squizlabs/php_codesniffer": "^3.5"
+		"squizlabs/php_codesniffer": "^3.5.8"
 	},
 	"autoload": {
 		"psr-4": {
@@ -52,6 +53,9 @@
 		],
 		"analyze": [
 			".\\bin\\phpstan analyse -l 5 -c phpstan.neon .\\src\\"
+		],
+		"phive": [
+			"php config\\composer_phive.php"
 		]
 	},
 	"minimum-stability": "dev",

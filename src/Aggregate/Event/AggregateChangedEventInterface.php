@@ -20,6 +20,8 @@ use Ramsey\Uuid\Uuid;
 interface AggregateChangedEventInterface
 {
 	/**
+	 * @param string $aggregateId
+	 * @param array $payload
 	 * @return static
 	 */
 	public static function occur(

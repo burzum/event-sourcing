@@ -23,17 +23,17 @@ class EventType
 	/**
 	 * @var string|null
 	 */
-	protected $eventType;
+	protected ?string $eventType;
 
 	/**
 	 * @var array
 	 */
-	protected $mapping = [];
+	protected array $mapping = [];
 
 	/**
 	 * @var string
 	 */
-	protected $eventTypeConstant = 'EVENT_TYPE';
+	protected string $eventTypeConstant = 'EVENT_TYPE';
 
 	/**
 	 * Constructor
@@ -88,7 +88,8 @@ class EventType
 	 * Use this factory when aggregate type equals to aggregate root class
 	 * The factory makes sure that the aggregate root class exists.
 	 *
-	 * @throws \InvalidArgumentException
+	 * @param string $eventRootClass
+	 * @return \Psa\EventSourcing\Aggregate\Event\EventType
 	 */
 	public static function fromEventClass(string $eventRootClass): EventType
 	{

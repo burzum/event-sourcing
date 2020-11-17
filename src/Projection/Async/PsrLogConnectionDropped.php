@@ -29,6 +29,8 @@ class PsrLogConnectionDropped implements CatchUpSubscriptionDropped
 	 */
 	protected $logger;
 
+	protected string $logLevel;
+
 	/**
 	 * @var \Prooph\EventStore\Async\CatchUpSubscriptionDropped
 	 */
@@ -45,7 +47,7 @@ class PsrLogConnectionDropped implements CatchUpSubscriptionDropped
 		?CatchUpSubscriptionDropped $subscriptionDropped = null
 	) {
 		$this->logger = $logger;
-		$this->logLevel = $logLevel === null ? LogLevel::ALERT : $logLevel;
+		$this->logLevel = $logLevel ?? LogLevel::ALERT;
 		$this->subscriptionDropped = $subscriptionDropped;
 	}
 

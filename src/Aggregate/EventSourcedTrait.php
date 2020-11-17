@@ -24,7 +24,7 @@ trait EventSourcedTrait
 	 *
 	 * @var int
 	 */
-	protected $aggregateVersion = 0;
+	protected int $aggregateVersion = 0;
 
 	/**
 	 * @throws RuntimeException

@@ -16,7 +16,7 @@ use Psa\EventSourcing\Aggregate\EventSourcedAggregateInterface;
 /**
  * Snapshot Factory
  */
-class SnapshotFactory implements SnapshotFactoryInterface
+interface SnapshotFactoryInterface
 {
 	/**
 	 * Creates a snapshop from an aggregat implementing EventSourcedAggregateInterface
@@ -25,19 +25,5 @@ class SnapshotFactory implements SnapshotFactoryInterface
 	 * @param \Psa\EventSourcing\Aggregate\EventSourcedAggregateInterface $aggregate Aggregate
 	 * @return \Psa\EventSourcing\SnapshotStore\SnapshotInterface
 	 */
-	public static function fromEventSourcedAggregate(EventSourcedAggregateInterface $aggregate): SnapshotInterface
-	{
-		$aggregateType = get_class($aggregate);
-		if ($aggregate instanceof AggregateTypeProviderInterface) {
-			$aggregateType = $aggregate->aggregateType();
-		}
-
-		return new Snapshot(
-			$aggregateType,
-			$aggregate->aggregateId(),
-			$aggregate,
-			$aggregate->aggregateVersion(),
-			new DateTimeImmutable()
-		);
-	}
+	public static function fromEventSourcedAggregate(EventSourcedAggregateInterface $aggregate): SnapshotInterface;
 }

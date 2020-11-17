@@ -35,12 +35,12 @@ class Snapshot implements SnapshotInterface
 	/**
 	 * @var int
 	 */
-	private $lastVersion;
+	private int $lastVersion;
 
 	/**
 	 * @var DateTimeImmutable
 	 */
-	private $createdAt;
+	private DateTimeImmutable $createdAt;
 
 	/**
 	 * Constructor

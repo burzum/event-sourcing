@@ -13,6 +13,7 @@ use Assert\Assert;
 use DateTimeImmutable;
 use DateTimeZone;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * Aggregate Changed Event
@@ -20,14 +21,14 @@ use Ramsey\Uuid\Uuid;
 class AggregateChangedEvent implements AggregateChangedEventInterface
 {
 	/**
-	 * @var \Ramsey\Uuid\UuidInterface
+	 * @var \Ramsey\Uuid\UuidInterface|null
 	 */
-	protected $uuid;
+	protected $uuid = null;
 
 	/**
 	 * @var array
 	 */
-	protected $payload = [];
+	protected array $payload = [];
 
 	/**
 	 * @var \DateTimeImmutable
@@ -37,7 +38,7 @@ class AggregateChangedEvent implements AggregateChangedEventInterface
 	/**
 	 * @var array
 	 */
-	protected $metadata = [];
+	protected array $metadata = [];
 
 	/**
 	 * @inheritDoc

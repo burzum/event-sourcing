@@ -16,12 +16,12 @@ trait AggregateTrait
 	/**
 	 * @var array
 	 */
-	protected $recordedEvents = [];
+	protected array $recordedEvents = [];
 
 	/**
 	 * @var int
 	 */
-	protected $aggregateVersion = 0;
+	protected int $aggregateVersion = 0;
 
 	/*
 	 * @var string|object

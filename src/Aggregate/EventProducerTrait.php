@@ -21,14 +21,14 @@ trait EventProducerTrait
 	 *
 	 * @var int
 	 */
-	protected $aggregateVersion = 0;
+	protected int $aggregateVersion = 0;
 
 	/**
 	 * List of events that are not committed to the EventStore
 	 *
 	 * @var \Psa\EventSourcing\Aggregate\Event\AggregateChangedEventInterface[]
 	 */
-	protected $recordedEvents = [];
+	protected array $recordedEvents = [];
 
 	/**
 	 * Get pending events and reset stack

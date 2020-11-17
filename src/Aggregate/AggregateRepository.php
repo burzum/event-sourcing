@@ -55,7 +55,7 @@ abstract class AggregateRepository extends AbstractRepository
 	 *
 	 * @var \Psa\EventSourcing\Aggregate\AggregateTypeInterface
 	 */
-	protected $aggregateType;
+	protected AggregateTypeInterface $aggregateType;
 
 	/**
 	 * Event Type Mapping
